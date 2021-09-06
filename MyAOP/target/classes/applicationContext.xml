@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--    基于xml的AOP编程-->
+<!--    &lt;!&ndash;    目标类&ndash;&gt;-->
+    <bean id="userDao" class="tech.rpish.dao.UserDaoImpl"/>
+<!--    &lt;!&ndash;    切面&ndash;&gt;-->
+<!--    <bean id="myAspect" class="tech.rpish.aspect.MyAspect"/>-->
+<!--    &lt;!&ndash;    aop编程&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;        配置切面&ndash;&gt;-->
+<!--        <aop:aspect id="aspect" ref="myAspect">-->
+<!--            &lt;!&ndash;            配置切入点&ndash;&gt;-->
+<!--            <aop:pointcut expression="execution(* tech.rpish.dao.*.*(..))" id="myPointCut"/>-->
+<!--            &lt;!&ndash;            配置通知&ndash;&gt;-->
+<!--            &lt;!&ndash;            前置通知&ndash;&gt;-->
+<!--            <aop:before method="myBefore" pointcut-ref="myPointCut"/>-->
+<!--            <aop:after-returning method="myAfterReturning" pointcut-ref="myPointCut"/>-->
+<!--            <aop:around method="myAround" pointcut-ref="myPointCut"/>-->
+<!--            <aop:after-throwing method="myAfterThrowing" pointcut-ref="myPointCut" throwing="e"/>-->
+<!--            <aop:after method="myAfter" pointcut-ref="myPointCut"/>-->
+
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+<!--    基于注解的AOP编程-->
+    <context:component-scan base-package="tech.rpish"/>
+    <aop:aspectj-autoproxy/>
+</beans>
