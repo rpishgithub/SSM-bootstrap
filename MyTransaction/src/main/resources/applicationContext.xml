@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/cache
+       http://www.springframework.org/schema/cache/spring-cache.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+<!--    1.配置数据源-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/spring_db"/>
+        <property name="username" value="root"/>
+        <property name="password" value="pass"/>
+
+    </bean>
+    
+<!--    2.配置JDBC Templat-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+<!--        使用默认数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+<!--    3.定义Bean UserDaoImpl-->
+    <bean id="userDao" class="tech.rpish.dao.UserDaoImpl">
+<!--        将jdbcTemplate注入到userDao实例中(预留了一个setter)-->
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    
+<!--    4.事务管理器,依赖数据源-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+<!--&lt;!&ndash;    XML-based Transaction&ndash;&gt;-->
+<!--&lt;!&ndash;    5.编写通知,对事务进行增强/通知,编写切入点及具体执行细节&ndash;&gt;-->
+<!--    <tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="*" propagation="REQUIRED" isolation="DEFAULT" read-only="false"/>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
+<!--&lt;!&ndash;    6.编写aop&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="txPointcut" expression="execution(* tech.rpish.dao.*.*(..))"/>-->
+<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>-->
+<!--    </aop:config>-->
+
+<!--    Annotation-based Transaction-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
