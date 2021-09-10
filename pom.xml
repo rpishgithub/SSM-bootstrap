@@ -13,6 +13,7 @@
         <module>AOP</module>
         <module>MyAOP</module>
         <module>MyTransaction</module>
+        <module>MyBatis-01</module>
     </modules>
 
     <properties>
