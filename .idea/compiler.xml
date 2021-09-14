@@ -9,6 +9,7 @@
         <module name="MyTransaction" />
         <module name="MyAOP" />
         <module name="MyBatis-01" />
+        <module name="MyBatis-02" />
         <module name="MyJdbc" />
       </profile>
     </annotationProcessing>

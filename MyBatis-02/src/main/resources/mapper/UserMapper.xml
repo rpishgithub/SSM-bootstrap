@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.rpish.mapper.UserMapper">
+    <select id="findUserByNameAndJob" parameterType="tech.rpish.po.User" resultType="tech.rpish.po.User">
+        select * from user
+        <where>
+            <if test="username !=null and username !=''">
+                and username like concat('%',#{username},'%')
+            </if>
+            <if test="job != null and job !=''">
+                and job = #{job}
+            </if>
+        </where>
+    </select>
+
+    <select id="findUserByNameOrJob" parameterType="tech.rpish.po.User" resultType="tech.rpish.po.User">
+        select * from user
+        <where>
+            <choose>
+                <when test="username != null and username !=''">
+                    and username like concat('%',#{username},'%')
+                </when>
+                <when test="job != null and job != ''">
+                    and job=#{job}
+                </when>
+                <otherwise>
+                    and phone is not null
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <update id="updateUser" parameterType="tech.rpish.po.User">
+        update user
+        <set>
+            <if test="username != null and username != ''">
+                username=#{username},
+            </if>
+            <if test="job != null and job!=''">
+                job=#{job},
+            </if>
+            <if test="phone!=null and phone!=''">
+                phone=#{phone}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <select id="findUserByIds" parameterType="List" resultType="tech.rpish.po.User">
+        select * from user where id in
+        <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="findUserByName" parameterType="tech.rpish.po.User" resultType="tech.rpish.po.User">
+        <bind name="p_username" value="'%'+username+'%'"/>
+        select * from user
+        where username like #{p_username}
+    </select>
+</mapper>
