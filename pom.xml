@@ -15,6 +15,7 @@
         <module>MyTransaction</module>
         <module>MyBatis-01</module>
         <module>MyBatis-02</module>
+        <module>MyBatis-03</module>
     </modules>
 
     <properties>
