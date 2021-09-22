@@ -20,5 +20,6 @@
     <mappers>
         <mapper resource="mapper/StudentIdCardMapper.xml"/>
         <mapper resource="mapper/StudentMapper.xml"/>
+        <mapper resource="mapper/ClassMapper.xml"/>
     </mappers>
 </configuration>
