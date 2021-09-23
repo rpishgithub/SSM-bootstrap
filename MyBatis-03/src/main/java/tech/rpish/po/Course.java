@@ -2,16 +2,18 @@ package tech.rpish.po;
 
 import java.util.List;
 
-public class Class {
+public class Course {
     private int id;
     private String name;
-    private List<Students> studentList;
+    private String code;
+    private List<Student> studentList;
 
     @Override
     public String toString() {
-        return "Class{" +
+        return "Course{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
                 ", studentList=" + studentList +
                 '}';
     }
@@ -32,11 +34,19 @@ public class Class {
         this.name = name;
     }
 
-    public List<Students> getStudentList() {
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public List<Student> getStudentList() {
         return studentList;
     }
 
-    public void setStudentList(List<Students> studentList) {
+    public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
     }
 }

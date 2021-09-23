@@ -2,35 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tech.rpish.mapper.StudentMapper">
-
-    <!--    1.嵌套查询-->
-    <!--    <select id="findStudentById" parameterType="Integer" resultMap="StudentResultWithIdCard">-->
-    <!--        select * from student where id=#{id}-->
-    <!--    </select>-->
-    <!--    <resultMap id="StudentResultWithIdCard" type="tech.rpish.po.Student">-->
-    <!--        <id property="id" column="id"/>-->
-    <!--        <result property="name" column="name"/>-->
-    <!--        <result property="sex" column="sex"/>-->
-    <!--        <association property="studentIdCard" column="card_id" javaType="tech.rpish.po.StudentIdCard"-->
-    <!--                     select="tech.rpish.mapper.StudentIdCardMapper.findStudentIdCardById"/>-->
-    <!--    </resultMap>-->
-
-    <!--    2.嵌套结果-->
-    <select id="findStudentById" parameterType="Integer" resultMap="StudentResultWithIdCard">
-        select s.*, card.code
-        from student s,
-             studentIdCard card
-        where s.card_id = card.id
-          and s.id = #{id}
+    <select id="findStudentByCourseId" parameterType="Integer" resultType="tech.rpish.po.Student">
+        select * from student where id in(
+            select student_id from seleCourse where course_id=#{id}
+            )
     </select>
-    <resultMap id="StudentResultWithIdCard" type="tech.rpish.po.Student">
-        <id property="id" column="id"/>
-        <result property="name" column="name"/>
-        <result property="sex" column="sex"/>
-        <association property="studentIdCard" javaType="tech.rpish.po.StudentIdCard">
-            <id property="id" column="id"/>
-            <id property="code" column="code"/>
-        </association>
-    </resultMap>
-
 </mapper>

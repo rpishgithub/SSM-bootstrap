@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.rpish.mapper.CourseMapper">
+    <select id="findCourseWithStudent" parameterType="Integer" resultMap="CourseWithStudentResult">
+        select * from course where id=#{id}
+    </select>
+    <resultMap id="CourseWithStudentResult" type="tech.rpish.po.Course">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <collection property="studentList" column="id" ofType="tech.rpish.po.Student" select="tech.rpish.mapper.StudentMapper.findStudentByCourseId"></collection>
+    </resultMap>
+</mapper>

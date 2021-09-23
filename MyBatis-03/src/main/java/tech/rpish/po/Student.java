@@ -1,26 +1,26 @@
 package tech.rpish.po;
 
+import java.util.List;
+
 public class Student {
-    private Integer id;
+    private int id;
     private String name;
-    private String sex;
-    private StudentIdCard studentIdCard;
+    private List<Course> courseList;
 
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
-                ", studentIdCard=" + studentIdCard +
+                ", courseList=" + courseList +
                 '}';
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -32,19 +32,11 @@ public class Student {
         this.name = name;
     }
 
-    public String getSex() {
-        return sex;
+    public List<Course> getCourseList() {
+        return courseList;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public StudentIdCard getStudentIdCard() {
-        return studentIdCard;
-    }
-
-    public void setStudentIdCard(StudentIdCard studentIdCard) {
-        this.studentIdCard = studentIdCard;
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
     }
 }
