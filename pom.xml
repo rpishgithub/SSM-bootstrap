@@ -10,12 +10,12 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>MyJdbc</module>
-        <module>AOP</module>
         <module>MyAOP</module>
         <module>MyTransaction</module>
         <module>MyBatis-01</module>
         <module>MyBatis-02</module>
         <module>MyBatis-03</module>
+        <module>MyBatis-04</module>
     </modules>
 
     <properties>

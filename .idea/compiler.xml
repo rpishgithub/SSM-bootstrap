@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="MyTransaction" />
         <module name="MyAOP" />
         <module name="MyBatis-01" />
         <module name="MyBatis-02" />
         <module name="MyBatis-03" />
         <module name="MyJdbc" />
+        <module name="MyBatis-04" />
+        <module name="MyTransaction" />
       </profile>
     </annotationProcessing>
   </component>
