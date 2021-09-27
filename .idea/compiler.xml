@@ -13,7 +13,16 @@
         <module name="MyJdbc" />
         <module name="MyBatis-04" />
         <module name="MyTransaction" />
+        <module name="MySpringMVC-01" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MySpringMVC" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="MySpringMVC" options="-parameters" />
+    </option>
   </component>
 </project>

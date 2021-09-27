@@ -16,6 +16,7 @@
         <module>MyBatis-02</module>
         <module>MyBatis-03</module>
         <module>MyBatis-04</module>
+        <module>MySpringMVC-01</module>
     </modules>
 
     <properties>
