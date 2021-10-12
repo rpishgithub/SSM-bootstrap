@@ -2,9 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    创建bean,将控制器类ControllerTest映射到/controllerTest请求中-->
     <bean name="/controllerTest" class="tech.rpish.controller.ControllerTest"/>
+<!--    配置BeanNameUrlHandlerMapping:讲handler/bean的url/bean name建立映射-->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+<!--    配置SimpleControllerHandlerAdapter:完成对ControllerTest Handler handleRequest方法的调用-->
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+<!--    配置InternalResourceViewResolver视图解析器:解析结果视图,呈现给用户-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
-
 </beans>
