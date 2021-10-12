@@ -1,3 +1,33 @@
+GET http://localhost:8080/MySpringMVC_01_war_exploded/controll/annotationController
+
+<> 2021-10-12T183719.404.html
+
+###
+
+GET http://localhost:8080/controll/annotationController
+
+<> 2021-10-12T183656.404.html
+
+###
+
+GET http://controll/annotationController
+
+###
+
+GET http://controll/annotationController
+
+###
+
+GET http://localhost:8080/index
+
+<> 2021-10-12T183613.404.html
+
+###
+
+GET http://controll/annotationController
+
+###
+
 GET http://localhost:8080/index
 
 <> 2021-09-27T003037.404.html

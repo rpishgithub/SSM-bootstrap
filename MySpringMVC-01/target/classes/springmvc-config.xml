@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean name="/controllerTest" class="tech.rpish.controller.ControllerTest"/>
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
-    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+<!--    开启注解扫描-->
+    <context:component-scan base-package="tech.rpish.controller"/>
 
+<!--    配置InternalResourceViewResolver视图解析器:解析结果视图,呈现给用户-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 </beans>
